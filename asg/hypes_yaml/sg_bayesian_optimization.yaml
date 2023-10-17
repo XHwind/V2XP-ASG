@@ -1,0 +1,68 @@
+description: |-
+  Copyright 2021 <UCLA Mobility Lab>
+  Author: Hao Xiang <haxiang@g.ucla.edu>
+  Content: This is the adversarial scene generation config files used to generate perception challenging scenes. 
+
+data_path: "OpenCDA/data_dumping/"
+bp_meta_path: "asg/asset/bbx_stats.json"
+filtered_scene_path: "asg/asset/filtered_scenes_stats.json"
+v2x_setting:
+  num_cavs: &num_cavs 2
+  num_infra: &num_infra 1
+
+
+
+adversarial:
+  core_method: "BayesianOptimization"
+  max_iter: 30
+  num_cavs: *num_cavs
+  num_infra: *num_infra
+  num_cav_trials: 3
+  k: 3 # Number of vehicles to perturb at once
+  N: 12
+  interval: 0.5
+  angle_range: [-45, 45, 15] # [start_angle, end_angle, step_size] in the unit of degree
+  N_sample: 3000
+  N_min: 100
+  BO:
+    normalize_flag: True
+    num_initial_samples: 20
+    optimizer:
+      random_state: 1
+    utility:
+      kind: "ucb"
+      kappa: 2.5
+      xi: 0.0
+
+
+
+vehicle_lidar_params: &vehicle_lidar_params
+  channels: 32
+  dropoff_general_rate: 0.0
+  dropoff_intensity_limit: 0.0
+  dropoff_zero_intensity: 0.0
+  lower_fov: -25
+  noise_stddev: 0.00
+  points_per_second: 250000
+  range: 70
+  rotation_frequency: 20
+  upper_fov: 2
+
+rsu_lidar_params: *vehicle_lidar_params
+
+world:
+  sync_mode: true
+  client_port: 2200
+  fixed_delta_seconds: &delta 0.05
+  seed: 20
+  spawn_range: 48
+  weather:
+    sun_altitude_angle: 15 # 90 is the midday and -90 is the midnight
+    cloudiness: 0 # 0 is the clean sky and 100 is the thickest cloud
+    precipitation: 0 # rain, 100 is the heaviest rain
+    precipitation_deposits: 0 # Determines the creation of puddles. Values range from 0 to 100, being 0 none at all and 100 a road completely capped with water.
+    wind_intensity: 0 # it will influence the rain
+    fog_density: 0 # fog thickness, 100 is the largest
+    fog_distance: 0  # Fog start distance. Values range from 0 to infinite.
+    fog_falloff: 0 # Density of the fog (as in specific mass) from 0 to infinity. The bigger the value, the more dense and heavy it will be, and the fog will reach smaller heights
+    wetness: 0

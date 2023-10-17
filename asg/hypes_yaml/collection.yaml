@@ -1,0 +1,60 @@
+bp_meta_path: ../asset/bbx_stats.json
+current_time: '2022_06_10_17_39_37'
+description: 'Copyright 2021 <UCLA Mobility Lab>
+
+  Author: Hao Xiang <haxiang@g.ucla.edu>
+
+  Content: This is the collection configuration file for generating V2X perception
+  data.'
+detection_class_sample_prob:
+  car: 0.5
+lidar_params: &id001
+  channels: 32
+  dropoff_general_rate: 0.0
+  dropoff_intensity_limit: 0.0
+  dropoff_zero_intensity: 0.0
+  lower_fov: -25.0
+  noise_stddev: 0.0
+  points_per_second: 250000
+  range: 50
+  rotation_frequency: 20
+  upper_fov: 2.0
+multi_class_bp: true
+rsu_lidar_params: *id001
+traffic_params:
+  auto_lane_change: false
+  center:
+  - -113.4
+  - 78.0
+  - 0.0
+  global_distance: 5
+  global_speed_perc: -100
+  ignore_lights_percentage: 0
+  radius: 35
+  random: true
+  rsu_list:
+  - id: -1
+    spawn_position:
+    - -113.4
+    - 78.0
+    - 4
+  set_osm_mode: true
+  spawn_num: 17
+  step: 6
+  sync_mode: true
+world:
+  client_port: 2000
+  fixed_delta_seconds: 0.05
+  seed: 14843
+  sync_mode: true
+  town_name: Town05
+  weather:
+    cloudiness: 0
+    fog_density: 0
+    fog_distance: 0
+    fog_falloff: 0
+    precipitation: 0
+    precipitation_deposits: 0
+    sun_altitude_angle: 15
+    wetness: 0
+    wind_intensity: 0

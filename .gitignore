@@ -2,11 +2,12 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+.idea/
+*.png
 # C extensions
 *.so
-
 # Distribution / packaging
+opencood/logs/
 .Python
 build/
 develop-eggs/
@@ -127,3 +128,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+data_dumping
+generated_scenes
+asg/asset/bbx_stats_backup.json
+resume_meta/
+asg/logs
+*.zip
+run_sg_server.sh
+test/read_yaml.py
